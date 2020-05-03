@@ -6,7 +6,6 @@ pipeline {
             steps {
                 echo 'Building..'
                 cd '/Users/yuwei/Workspace/IDEA/SpringCloudService'
-                pwd
                 mvn '-e -U clean install -Dmaven.test.skip=true'
             }
         }
