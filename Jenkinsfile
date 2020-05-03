@@ -23,7 +23,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying Start....'
-                java -jar SpringBootService-0.0.1-SNAPSHOT.jar
+                java '-jar SpringBootService-0.0.1-SNAPSHOT.jar'
                 echo 'Deploying End....'
             }
         }
