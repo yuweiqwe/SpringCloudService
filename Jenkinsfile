@@ -7,7 +7,7 @@ pipeline {
                 echo 'Building..'
                 sh """
                     cd /Users/yuwei/Workspace/IDEA/SpringCloudService
-                    mvn -e -U clean install -Dmaven.test.skip=true
+                    /Users/yuwei/Softwares/apache-maven-3.5.4/bin/mvn -e -U clean install -Dmaven.test.skip=true
                 """
             }
         }
