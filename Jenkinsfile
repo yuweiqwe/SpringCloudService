@@ -5,8 +5,10 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                cd '/Users/yuwei/Workspace/IDEA/SpringCloudService'
-                mvn '-e -U clean install -Dmaven.test.skip=true'
+                sh """
+                    cd /Users/yuwei/Workspace/IDEA/SpringCloudService
+                    mvn -e -U clean install -Dmaven.test.skip=true
+                """
             }
         }
         stage('Test') {
@@ -22,7 +24,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying Start....'
-                java '-jar SpringBootService-0.0.1-SNAPSHOT.jar'
+                sh """
+                    java '-jar SpringBootService-0.0.1-SNAPSHOT.jar'
+                """
                 echo 'Deploying End....'
             }
         }
