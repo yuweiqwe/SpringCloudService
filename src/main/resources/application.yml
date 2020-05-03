@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: spring-cloud-provider
+server:
+  port: 8080
+eureka:
+  client:
+    service-url:
+      defaultZone: http://master:8765/eureka/,http://slave1:8764/eureka/
+  instance:
+    metadata-map:
+      cluster:
+        service
+# 开启熔断器
+feign:
+  hystrix:
+    enabled: true
+# spring boot信息，可选配置
+info:
+  app:
+    name: spring-cloud-provider-wly
+    version: 1.0.0
+# 解决hystrix.stream 404的问题
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+#      base-path: /
