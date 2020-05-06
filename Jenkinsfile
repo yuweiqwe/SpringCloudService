@@ -25,9 +25,9 @@ pipeline {
             steps {
                 echo 'Deploy - Stop Start....'
                 sh """
-                    curl -X "POST" "http://localhost:8081/actuator/service-registry?status=DOWN" -H "Content-Type: application/vnd.spring-boot.actuator.v2+json;charset=UTF-8"
+                    curl -X POST http://localhost:8081/actuator/service-registry?status=DOWN -H 'Content-Type: application/vnd.spring-boot.actuator.v2+json;charset=UTF-8'
 
-                    curl -X http://localhost:8081/actuator/shutdown
+                    curl -X POST http://localhost:8081/actuator/shutdown
                 """
                 echo 'Deploy - Stop End....'
             }
