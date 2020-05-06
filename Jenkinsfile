@@ -36,11 +36,11 @@ pipeline {
         stage('Deploy - Restart') {
             steps {
                 echo 'Deploy - Restart Start....'
-                sh """
+                sh "
                     cd /Users/yuwei/Workspace/IDEA/SpringCloudService/target
 
                     nohup /usr/bin/java -jar -Dspring.profiles.active=node1 SpringBootService-0.0.1-SNAPSHOT.jar &
-                """
+                "
                 echo 'Deploy - Restart End....'
             }
         }
