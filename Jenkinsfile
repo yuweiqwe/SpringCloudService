@@ -38,7 +38,7 @@ pipeline {
                 echo 'Deploy - Restart Start....'
                 sh "cd /Users/yuwei/Workspace/IDEA/SpringCloudService/target"
 
-                sh "'nohup /usr/bin/java -jar -Dspring.profiles.active=node1 SpringBootService-0.0.1-SNAPSHOT.jar &'"
+                sh "JENKINS_NODE_COOKIE=dontKillMe nohup /usr/bin/java -jar -Dspring.profiles.active=node1 SpringBootService-0.0.1-SNAPSHOT.jar &"
                 echo 'Deploy - Restart End....'
             }
         }
