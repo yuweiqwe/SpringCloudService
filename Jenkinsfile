@@ -25,7 +25,7 @@ pipeline {
             steps {
                 echo 'Deploying Start....'
                 sh """
-                    /usr/bin/java '-jar SpringBootService-0.0.1-SNAPSHOT.jar'
+                    /usr/bin/java -jar SpringBootService-0.0.1-SNAPSHOT.jar
                 """
                 echo 'Deploying End....'
             }
