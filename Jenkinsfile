@@ -28,7 +28,7 @@ pipeline {
                     curl -X POST http://localhost:8081/actuator/service-registry?status=DOWN -H 'Content-Type: application/vnd.spring-boot.actuator.v2+json;charset=UTF-8'
                     sleep 10
                     curl -X POST http://localhost:8081/actuator/shutdown
-                    sleep 10
+                    sleep 20
                 """
                 echo 'Deploy - Stop End....'
             }
