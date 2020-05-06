@@ -21,14 +21,25 @@ pipeline {
                 echo 'Transfer..'
             }
         }
-        stage('Deploy') {
+        stage('Deploy - Stop') {
             steps {
-                echo 'Deploying Start....'
+                echo 'Deploy - Stop Start....'
+                sh """
+                    curl -X "POST" "http://localhost:8081/actuator/service-registry?status=DOWN" -H "Content-Type: application/vnd.spring-boot.actuator.v2+json;charset=UTF-8"
+
+                    curl -X http://localhost:8081/actuator/shutdown
+                """
+                echo 'Deploy - Stop End....'
+            }
+        }
+        stage('Deploy - Restart') {
+            steps {
+                echo 'Deploy - Restart Start....'
                 sh """
                     cd /Users/yuwei/Workspace/IDEA/SpringCloudService/target
-                    /usr/bin/java -jar -Dspring.profiles.active=node1 SpringBootService-0.0.1-SNAPSHOT.jar
+                    nohup /usr/bin/java -jar -Dspring.profiles.active=node1 SpringBootService-0.0.1-SNAPSHOT.jar &
                 """
-                echo 'Deploying End....'
+                echo 'Deploy - Restart End....'
             }
         }
     }
