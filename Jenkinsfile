@@ -26,7 +26,7 @@ pipeline {
                 echo 'Deploying Start....'
                 sh """
                     cd /Users/yuwei/Workspace/IDEA/SpringCloudService/target
-                    /usr/bin/java -jar SpringBootService-0.0.1-SNAPSHOT.jar
+                    /usr/bin/java -jar -Dspring.profiles.active=node1 SpringBootService-0.0.1-SNAPSHOT.jar
                 """
                 echo 'Deploying End....'
             }
